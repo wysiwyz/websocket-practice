@@ -26,3 +26,26 @@
    - `SockJS`: WebSocket client，使用原生 WebSockets，對於比較有年代的/不支援 WebSocket 的瀏覽器有提供 fallback options 
    - `STOMP JS`: JavaScript 的 stomp client
 5. Demo
+   ![img](src/main/resources/static/img/demo-1.png)
+
+6. 使用 RabbitMQ 作為 message broker
+    - 加入以下兩個 dependencies :
+        - spring-boot-starter-amqp
+        - spring-boot-starter-reactor-netty (for Full Featured STOMP Broker Relay)
+    - Docker container for RabbitMQ
+      ```bash
+      docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -p 61613:61613 rabbitmq:3-management
+      ```
+    - Modify WebSocketConfig, enableSimpleBroker -> enableStompBrokerRelay
+    - Test your code
+    - 遇到以下的錯誤訊息，參考 [Stomp-plugin](https://www.rabbitmq.com/docs/stomp) 這個連結啟用 stomp plugin
+      ```dockerfile
+      TCP connection failure in session _system_: Transport failure: Connection reset
+          at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+          at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+          at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:255) ~[netty-buffer-4.1.111.Final.jar:4.1.111.Final] ...
+      ``` 
+    - 這樣就成功連上 rabbitMQ broker 了
+      
+      ![demo-2](src/main/resources/static/img/demo-2.png)
+      
