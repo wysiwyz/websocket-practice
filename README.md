@@ -20,5 +20,9 @@
        - message destination 開頭是 `/app` 前綴的，應該要路由到 messaging-handling 方法（後續定義）
      - 以上範例使用 in-memory message broker，也可以改成其他功能更完整的 message broker，例如 RabbitMQ 或者 ActiveMQ
 
-
-       
+3. 新增 ChatMessage model, ChatController 以及 WebSocketEventListener
+4. 加入前端 HTML, CSS, JavaScript
+   - 使用函式庫：`sockjs`, `stomp` JavaScript libraries
+   - `SockJS`: WebSocket client，使用原生 WebSockets，對於比較有年代的/不支援 WebSocket 的瀏覽器有提供 fallback options 
+   - `STOMP JS`: JavaScript 的 stomp client
+5. Demo
