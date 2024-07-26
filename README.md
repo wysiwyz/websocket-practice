@@ -49,3 +49,6 @@
       
       ![demo-2](src/main/resources/static/img/demo-2.png)
       
+## 改造成分布式集群
+
+1. 加入 Redis dependencies 以及 redis appplication config

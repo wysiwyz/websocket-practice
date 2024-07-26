@@ -25,6 +25,10 @@ dependencies {
 	// RabbitMQ and STOMP broker relay
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-reactor-netty'
+	// redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	// Json
+	implementation 'com.alibaba:fastjson:2.0.52'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

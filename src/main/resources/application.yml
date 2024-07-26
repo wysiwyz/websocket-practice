@@ -1,0 +1,33 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: websocket-practice
+  rabbitmq:
+    host: localhost
+    port: 5672
+    stomp:
+      host: localhost
+      port: 61613
+  # redis connection config
+  redis:
+    database: 0
+    host: localhost
+    password:
+    port: 6379
+    ssl: false
+    # max idle connection
+    jedis:
+      pool:
+        max-idle: 10
+        max-wait: 60000
+# redis 添加頻道名稱定義
+redis:
+  channel:
+    msgToAll: websocket.msgToAll
+    # to broadcast user online/offline info
+    userStatus: websocket.userStatus
+  set:
+    # redis set, to save online users info
+    onlineUsers: websocket.onlineUsers
